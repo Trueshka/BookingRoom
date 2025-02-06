@@ -1,0 +1,29 @@
+volumes:
+  pg_booking:
+
+services:
+  booking_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=booking_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pg_booking:/var/lib/postgresql/data
+
+
+  app:
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - booking_db
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://booking_db:5432/booking_db"
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: pass
+      SPRING_LIQUIBASE_ENABLED: true

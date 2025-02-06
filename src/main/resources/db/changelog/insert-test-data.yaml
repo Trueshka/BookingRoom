@@ -1,0 +1,84 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ipopov
+      changes:
+        - insert:
+            tableName: coworking
+            columns:
+              - column:
+                  name: name
+                  value: "Coworking Red"
+              - column:
+                  name: location
+                  value: "First floor"
+        - insert:
+            tableName: coworking
+            columns:
+              - column:
+                  name: name
+                  value: "Coworking Green"
+              - column:
+                  name: location
+                  value: "Second floor"
+
+        - insert:
+            tableName: room
+            columns:
+              - column:
+                  name: name
+                  value: "Room 1"
+              - column:
+                  name: capacity
+                  value: 10
+              - column:
+                  name: coworking_id
+                  value: 1
+        - insert:
+            tableName: room
+            columns:
+              - column:
+                  name: name
+                  value: "Room 2"
+              - column:
+                  name: capacity
+                  value: 5
+              - column:
+                  name: coworking_id
+                  value: 2
+        - insert:
+            tableName: room
+            columns:
+              - column:
+                  name: name
+                  value: "Room 3"
+              - column:
+                  name: capacity
+                  value: 15
+              - column:
+                  name: coworking_id
+                  value: 2
+        - insert:
+            tableName: booking
+            columns:
+              - column:
+                  name: start_time
+                  value: "2025-02-01T10:00:00"
+              - column:
+                  name: end_time
+                  value: "2025-02-01T12:00:00"
+              - column:
+                  name: room_id
+                  value: 1
+        - insert:
+            tableName: booking
+            columns:
+              - column:
+                  name: start_time
+                  value: "2025-02-03T14:30:00"
+              - column:
+                  name: end_time
+                  value: "2025-02-03T16:00:00"
+              - column:
+                  name: room_id
+                  value: 2
